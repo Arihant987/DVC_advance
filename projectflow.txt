@@ -35,3 +35,4 @@ Adding a remote S3 storage to dvc: I
 25> dvc remote add -d dvcstore s3://bucketnane
 26> dvc commit-push the exp outcome that you want to keep
 27> Finally git add, comit, push
+28> Finally delete AWS resources -> IAM user and S3 bucket 

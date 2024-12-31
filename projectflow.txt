@@ -23,3 +23,15 @@ Expermients with DVC:
 16> Do "dvc exp remove {exp-name}" to remove exp (optional) | "dvc exp apply {exp-name}" to reproduce prev exp
 17> Change params, re-run code (produce new experiments)
 18> Now git add, commit, push
+
+# Now Cloud Computing part
+Adding a remote S3 storage to dvc: I
+19> Login to AWs console
+20> Create an IAM user (straight forward process)
+21> Create S3 (enter unique name and create)
+22> pip install dvc[s3]
+23> pip install awscli
+24> aws configure
+25> dvc remote add -d dvcstore s3://bucketnane
+26> dvc commit-push the exp outcome that you want to keep
+27> Finally git add, comit, push

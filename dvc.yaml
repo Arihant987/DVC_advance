@@ -6,41 +6,48 @@ stages:
   # params are parameters
     cmd: python src/data_ingestion.py
     deps:
-      - src/data_ingestion.py
+    - src/data_ingestion.py
     params:
-      - data_ingestion.test_size
+    - data_ingestion.test_size
     outs:
-      - data/raw
+    - data/raw
   Pre_processing:
     cmd: python src/Pre_processing.py
     deps:
-      - src/Pre_processing.py
-      - data/raw
+    - src/Pre_processing.py
+    - data/raw
     outs:
-      - data/interim
+    - data/interim
   feature_engineering:
     cmd: python src/feature_engineering.py
     deps:
-      - src/feature_engineering.py
-      - data/interim
+    - src/feature_engineering.py
+    - data/interim
     params:
-      - feature_engineering.max_features
+    - feature_engineering.max_features
     outs:
-      - data/processed
-  Model_training:  
+    - data/processed
+  Model_training:
     cmd: python src/model_training.py
     deps:
-      - src/model_training.py
-      - data/processed
+    - src/model_training.py
+    - data/processed
     params:
-      - model_training.n_estimators
-      - model_training.random_state
+    - model_training.n_estimators
+    - model_training.random_state
     outs:
-      - models/model.pkl
+    - models/model.pkl
   Model_evaluation:
     cmd: python src/model_evaluation.py
     deps:
-      - src/model_evaluation.py
-      - models/model.pkl
+    - src/model_evaluation.py
+    - models/model.pkl
     outs:
-      - reports/metrics.json
+    - reports/metrics.json
+params:
+- dvclive/params.yaml
+metrics:
+- dvclive/metrics.json
+plots:
+- dvclive/plots/metrics:
+    x: step
